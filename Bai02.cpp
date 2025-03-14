@@ -17,34 +17,31 @@ class PhanSo {
             return MauSo;
         }
         void RutGon(){
-            int TempTuSo, TempMauSo;
-            TempTuSo = TuSo/GCD(TuSo, MauSo);
-            TempMauSo = MauSo/GCD(TuSo, MauSo);
-            TuSo = TempTuSo;
-            MauSo = TempMauSo;
+            int UCLN = GCD(abs(TuSo), abs(MauSo));
+            TuSo /= UCLN;
+            MauSo /= UCLN;
             if(MauSo < 0){
                 TuSo = -TuSo;
                 MauSo = -MauSo;
             }
         }
         void NhapPhanSo(){
-            do{
-                cout << "Nhap Tu So: ";
-                cin >> TuSo;
-                cout << "Nhap Mau So: ";
+            cout << "Nhap Tu So: ";
+            cin >> TuSo;
+            cout << "Nhap Mau So: ";
+            cin >> MauSo;
+            while (MauSo == 0) {
+                cout << "Mau So Khong Hop Le!" << endl;
                 cin >> MauSo;
-            }while(MauSo == 0);
+            }
         }
         void XuatPhanSo(){
-            if(MauSo == 0){
-                cout << "Mau So Khong Hop Le";
-                return;
+            if(TuSo % MauSo == 0){
+                cout << TuSo / MauSo << endl;
             }
-            if(MauSo == 1){
-                cout << TuSo;
-                return;
+            else{
+                cout << TuSo << "/" << MauSo << endl;
             }
-            cout << TuSo << "/" << MauSo << endl;
         }
 };
 
